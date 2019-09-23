@@ -1,0 +1,39 @@
+dataSourceKey: defaultDS
+destination: example
+groupId: g1
+esMapping:
+  _index: erdp-risk
+  _type: _doc
+  _id: id
+  upsert: true
+#  pk: id
+#  sql: "select a.id as _id, a.name, a.role_id, a.c_time from user2 a"
+  sql: "SELECT
+          id,
+          project_id,
+          code,
+          name,
+          description,
+          phase,
+          type,
+          state,
+          grade,
+          plan_close_time,
+          measures,
+          opinion,
+          del_flag,
+          create_by,
+          create_time,
+          update_by,
+          update_time,
+          state_template_id
+        FROM
+          risk_elrisk  "
+#  sql: "select a.id as _id, a.name as _name, a.role_id as _role_id, b.role_name as _role_name,
+#        a.c_time as _c_time from user a
+#        left join role b on b.id=a.role_id"
+#  objFields:
+#    _labels: array:;
+#  etlCondition: "where a.c_time>={}"
+  commitBatch: 3000
+

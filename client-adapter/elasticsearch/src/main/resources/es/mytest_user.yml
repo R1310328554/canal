@@ -1,0 +1,18 @@
+dataSourceKey: defaultDS
+destination: example
+groupId: g1
+esMapping:
+  _index: erdp
+  _type: _doc
+  _id: _id
+  upsert: true
+#  pk: id
+#  sql: "select a.id as _id, a.name, a.role_id, a.c_time from user2 a"
+  sql: "select a.id  as _id, a.name , a.code as role_id, a.start_date as c_time from plan_eltask a"
+#  sql: "select a.id as _id, a.name as _name, a.role_id as _role_id, b.role_name as _role_name,
+#        a.c_time as _c_time from user a
+#        left join role b on b.id=a.role_id"
+#  objFields:
+#    _labels: array:;
+  etlCondition: "where a.c_time>={}"
+  commitBatch: 3000

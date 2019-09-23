@@ -1,0 +1,64 @@
+dataSourceKey: defaultDS
+destination: example
+groupId: g1
+esMapping:
+  _index: erdp-task
+  _type: _doc
+  _id: id
+  upsert: true
+#  pk: id
+#  sql: "select a.id as _id, a.name, a.role_id, a.c_time from user2 a"
+  sql: "SELECT
+  string_name1,
+  id,
+  parent_id,
+  project_id,
+  state_template_id,
+  code,
+  name,
+  description,
+  priority,
+  start_date,
+  finish_date,
+  actual_start_date,
+  actual_finish_date,
+  state,
+  workload,
+  percent_complete,
+  weight,
+  critical_flag,
+  critical2_flag,
+  summary_flag,
+  fixed_date,
+  milestone_flag,
+  constraint_type,
+  constraint_date,
+  predecessor_link,
+  duration,
+  actual_duration,
+  res_assignments,
+  source_obj_name,
+  source_obj_id,
+  owner_type,
+  del_flag,
+  create_by,
+  create_time,
+  update_time,
+  update_by,
+  order_code,
+  parent_id_path,
+  sop,
+  task_input,
+  task_output,
+  is_cutted,
+  can_be_cutted,
+  template_id
+           from plan_eltask "
+#  sql: "select a.id as _id, a.name as _name, a.role_id as _role_id, b.role_name as _role_name,
+#        a.c_time as _c_time from user a
+#        left join role b on b.id=a.role_id"
+#  objFields:
+#    _labels: array:;
+#  etlCondition: "where a.c_time>={}"
+  commitBatch: 3000
+

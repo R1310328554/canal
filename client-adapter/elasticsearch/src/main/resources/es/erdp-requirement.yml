@@ -1,0 +1,65 @@
+dataSourceKey: defaultDS
+destination: example
+groupId: g1
+esMapping:
+  _index: erdp-requirement
+  _type: _doc
+#  _type: requirement
+  _id: id
+  upsert: true
+#  pk: id
+#  sql: "select a.id as _id, a.name, a.role_id, a.c_time from user2 a"
+  sql: "select
+          id,
+          code,
+          owner_id,
+          name,
+          owner_type,
+          type,
+          parent_id,
+          description,
+          priority,
+          state,
+          submitter_id,
+          submitter_name,
+          work_load,
+          start_date,
+          due_date,
+          create_by,
+          create_time,
+          update_by,
+          update_time,
+          del_flag,
+          order_code,
+          department,
+          submit_time,
+          req_source,
+          product_id,
+          req_value,
+          state_template_id,
+          req_test_001,
+          req_test_002,
+          string_value_1,
+          string_value_2,
+          string_value_3,
+          string_value_4,
+          string_value_5,
+          string_value_6,
+          string_value_7,
+          string_value_8,
+          string_value_9,
+          string_value_10,
+          acceptance_standard,
+          busi_value,
+          version,
+          fix_version
+        from
+          req_elrequirement  "
+#  sql: "select a.id as _id, a.name as _name, a.role_id as _role_id, b.role_name as _role_name,
+#        a.c_time as _c_time from user a
+#        left join role b on b.id=a.role_id"
+#  objFields:
+#    _labels: array:;
+#  etlCondition: "where a.c_time>={}"
+  commitBatch: 3000
+

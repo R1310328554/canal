@@ -1,0 +1,44 @@
+dataSourceKey: defaultDS
+destination: example
+groupId: g1
+esMapping:
+  _index: erdp-issue
+  _type: _doc
+  _id: id
+  upsert: true
+#  pk: id
+#  sql: "select a.id as _id, a.name, a.role_id, a.c_time from user2 a"
+  sql: " select
+    id,
+    project_id,
+    state_template_id,
+    code,
+    name,
+    description,
+    state,
+    submitter_id,
+    solutions,
+    priority,
+    type,
+    phase,
+    workload,
+    start_date,
+    finish_date,
+    actual_start_date,
+    actual_finish_date,
+    remark,
+    del_flag,
+    create_by,
+    create_time,
+    update_by,
+    update_time
+  from
+    issue_elissue "
+#  sql: "select a.id as _id, a.name as _name, a.role_id as _role_id, b.role_name as _role_name,
+#        a.c_time as _c_time from user a
+#        left join role b on b.id=a.role_id"
+#  objFields:
+#    _labels: array:;
+#  etlCondition: "where a.c_time>={}"
+  commitBatch: 3000
+
